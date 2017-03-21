@@ -13,17 +13,26 @@ describe("Add Tokens", function() {
         browser.sleep(sleep_time);
 
         for (var i = 0; i < token_list.length; i++) {
+
             console.log(token_list[i]);
+            //Token Details
+            element(by.model('mobile')).sendKeys(token_list[i]);
+
+            browser.sleep(sleep_time);
+
+            element(by.model('reason')).sendKeys('sick');
+
+            browser.sleep(sleep_time);
+
+            //Join
+            element(by.css('[ng-click="join(mobile, name, reason, selectedQueue, appointmentDate, selectedSlot)"]')).click();
+
+            browser.sleep(5000);
+
+            expect(element(by.css('.md-toast-content')).getText()).toEqual('Token created successfully');
+
         }
 
-        // //Token Details
-        // element(by.model('mobile')).sendKeys(9865412321);
-        //
-        // browser.sleep(sleep_time);
-        //
-        // element(by.model('reason')).sendKeys('sick');
-        //
-        // browser.sleep(sleep_time);
         //
         // //Queue Selection
         // element(by.model('selectedQueue')).click();
@@ -35,13 +44,6 @@ describe("Add Tokens", function() {
         // doc_qsel.get(1).click();
         //
         // browser.sleep(sleep_time);
-        //
-        // //Join
-        // element(by.css('[ng-click="join(mobile, name, reason, selectedQueue, appointmentDate, selectedSlot)"]')).click();
-        //
-        // browser.sleep(5000);
-        //
-        // expect(element(by.css('.md-toast-content')).getText()).toEqual('Token created successfully');
         //
         // /*= End of 1st sminq =*/
         // /*=============================================<<<<<*/
